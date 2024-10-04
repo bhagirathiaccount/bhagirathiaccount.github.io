@@ -19,6 +19,7 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     const amount = document.getElementById('amount').value;
     const description = document.getElementById('description').value;
     const remark = document.getElementById('remark').value;
+    const timestamp = new Date().toLocaleString(); 
 
     // URL of your Google Apps Script Web App (replace with your actual Web App URL)
     const scriptURL = 'https://script.google.com/a/~/macros/s/AKfycbzuOe2E348vPaVN-Y4K4wFB7XHNWsJWKie4roJB1OPE9zI2ZZ2imqxSaL56ysXi4gg/exec';
@@ -30,6 +31,7 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     formData.append('amount', amount);
     formData.append('description', description);
     formData.append('remark', remark);
+    formData.append('timestamp', timestamp);
 
     // Show loading indicator (disable button and show spinner)
     const submitButton = document.querySelector('button[type="submit"]');
