@@ -11,7 +11,7 @@ function validateForm() {
     return true;
 }
 document.getElementById('voucherForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent default form submission
+    event.preventDefault();  // Prevent the default form submission
 
     // Get form data
     const voucherNo = document.getElementById('voucherNo').value;
@@ -20,7 +20,7 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     const description = document.getElementById('description').value;
     const remark = document.getElementById('remark').value;
 
-    // URL of the Google Apps Script Web App (replace with your actual URL)
+    // URL of your Google Apps Script Web App (replace with your actual Web App URL)
     const scriptURL = 'https://script.google.com/a/~/macros/s/AKfycbzuOe2E348vPaVN-Y4K4wFB7XHNWsJWKie4roJB1OPE9zI2ZZ2imqxSaL56ysXi4gg/exec';
 
     // Create a FormData object to send form data via POST request
@@ -31,15 +31,32 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     formData.append('description', description);
     formData.append('remark', remark);
 
-    // Send the form data to Google Apps Script
+    // Show loading indicator (disable button and show spinner)
+    const submitButton = document.querySelector('button[type="submit"]');
+    const spinner = document.getElementById('spinner');
+    submitButton.disabled = true;  // Disable the submit button
+    submitButton.textContent = "Saving...";  // Show loading text
+    spinner.style.display = "inline-block";  // Show the spinner
+
+    // Send the form data to the Google Apps Script via POST
     fetch(scriptURL, { method: 'POST', body: formData })
         .then(response => response.text())
         .then(result => {
             alert('Data saved successfully!');
             document.getElementById('voucherForm').reset();  // Reset form
+
+            // Hide the spinner and reset the button after success
+            submitButton.disabled = false;
+            submitButton.textContent = "Submit";  // Revert button text
+            spinner.style.display = "none";  // Hide spinner
         })
         .catch(error => {
             console.error('Error!', error.message);
             alert('Failed to save data.');
+
+            // Hide the spinner and reset the button if an error occurs
+            submitButton.disabled = false;
+            submitButton.textContent = "Submit";  // Revert button text
+            spinner.style.display = "none";  // Hide spinner
         });
 });
