@@ -3,7 +3,7 @@ body {
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     margin: 0;
 }
@@ -13,7 +13,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 800px;
     width: 100%;
 }
 
@@ -50,10 +50,11 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
 /* Spinner style */
 .spinner {
-    display: none; /* Initially hidden */
-    border: 4px solid #f3f3f3; 
+    display: none;
+    border: 4px solid #f3f3f3;
     border-radius: 50%;
     border-top: 4px solid #3498db;
     width: 20px;
@@ -66,4 +67,30 @@ button:hover {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Date picker alignment */
+.date-picker-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.summary {
+    margin-top: 20px;
+    font-weight: bold;
 }
