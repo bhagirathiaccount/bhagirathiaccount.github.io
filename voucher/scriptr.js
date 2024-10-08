@@ -12,14 +12,14 @@ function fetchData() {
     // Show the spinner
     document.getElementById('spinner').style.display = 'inline-block';
 
-    // Make a request to fetch the data
+    // Pass the from and to dates as query parameters
     fetch(`${sheetUrl}?from=${fromDate}&to=${toDate}`)
         .then(response => response.json())
         .then(data => {
             // Hide the spinner
             document.getElementById('spinner').style.display = 'none';
 
-            // Format date in dd/mm/yyyy format and display data
+            // Display data with date filtering
             displayData(data);
         })
         .catch(error => {
