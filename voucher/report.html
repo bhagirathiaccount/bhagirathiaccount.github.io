@@ -65,7 +65,18 @@
             
             // Extracting the table data
             const table = document.getElementById('data-table');
-            doc.text("Voucher Data Report", 14, 16);  // Title
+            
+                    // Get the values of From Date and To Date from the form
+        const fromDate = document.getElementById('from-date').value;
+        const toDate = document.getElementById('to-date').value;
+
+        // Title
+        doc.text("Voucher Data Report", 14, 16);
+
+        // Add the From Date and To Date below the title
+        doc.text(`From Date: ${fromDate}`, 14, 26);
+        doc.text(`To Date: ${toDate}`, 14, 34);
+            
             doc.autoTable({
                 html: table,           // Get table content
                 startY: 20,            // Position the table below the title
