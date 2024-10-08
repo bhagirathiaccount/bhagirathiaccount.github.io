@@ -24,7 +24,7 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     const timestamp = new Date().toLocaleString(); 
 
     // URL of your Google Apps Script Web App (replace with your actual Web App URL)
-    const scriptURL = 'https://script.google.com/a/~/macros/s/AKfycbytfiTdYehlUMwySEk-tNWYVFStv_2erkK-vsNvNEL0wkUAj4Usu1aq0E7ZHqm-WpBy/exec';
+    const scriptURL = 'https://script.google.com/a/~/macros/s/AKfycby0bI95R-TukDh_GFKW4Sj-AFr5G8zY0gYztQl9F1U7u4eM6LQ1TLmrPpb1rJX-ggMT/exec';
 
     // Create a FormData object to send form data via POST request
     const formData = new FormData();
