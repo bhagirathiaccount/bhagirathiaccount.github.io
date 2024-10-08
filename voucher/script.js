@@ -2,9 +2,10 @@ function validateForm() {
     const voucherNo = document.getElementById('voucherNo').value;
     const date = document.getElementById('date').value;
     const amount = document.getElementById('amount').value;
+    const amount = document.getElementById('paid_to').value;
     const description = document.getElementById('description').value;
 
-    if (!voucherNo || !date || !amount || !description) {
+    if (!voucherNo || !date || !amount || !paid_to || !description) {
         alert("Please fill in all the required fields.");
         return false;
     }
@@ -17,6 +18,7 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     const voucherNo = document.getElementById('voucherNo').value;
     const date = document.getElementById('date').value;
     const amount = document.getElementById('amount').value;
+    const paid_to = document.getElementById('paid_to').value;
     const description = document.getElementById('description').value;
     const remark = document.getElementById('remark').value;
     const timestamp = new Date().toLocaleString(); 
@@ -29,6 +31,7 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     formData.append('voucherNo', voucherNo);
     formData.append('date', date);
     formData.append('amount', amount);
+    formData.append('paid_to', paid_to);
     formData.append('description', description);
     formData.append('remark', remark);
     formData.append('timestamp', timestamp);
