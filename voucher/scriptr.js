@@ -1,4 +1,4 @@
-const sheetUrl = 'https://script.google.com/macros/s/AKfycby73KpS_sJw33vaQOh1n47y_vR0jdMq6e-UtwpSF0NnrPydG06ab32WJW2l_xXV9pdP/exec';  // Your WebApp URL
+const sheetUrl = 'https://script.google.com/a/~/macros/s/AKfycby0bI95R-TukDh_GFKW4Sj-AFr5G8zY0gYztQl9F1U7u4eM6LQ1TLmrPpb1rJX-ggMT/exec';  // Your WebApp URL
 
 function fetchData() {
     const fromDate = document.getElementById('from-date').value;
