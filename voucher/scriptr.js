@@ -48,6 +48,7 @@ function displayData(data) {
             row.voucherNo,
             formattedDate,
             row.amount,
+            row.paid_to,
             row.description,
             row.remark
         ];
