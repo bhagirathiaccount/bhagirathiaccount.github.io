@@ -7,7 +7,7 @@
     <title>Voucher Data Report</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
 </head>
 
 <body>
@@ -51,40 +51,30 @@
         </table>
 
         <div class="summary" id="summary"></div>
-        <button id="downloadPDF" onclick="downloadPDF()">Download PDF</button>
+        <button id="downloadPDF" onclick="downloadTableAsPDF()">Download PDF</button>
     </div>
 
     
 
     <script src="scriptr.js"></script>
 
-    <script>
-        function downloadPDF() {
+   <script>
+        function downloadTableAsPDF() {
             const { jsPDF } = window.jspdf;
-            const formContainer = document.getElementById('form-container');
-
-            html2canvas(formContainer).then(canvas => {
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const imgData = canvas.toDataURL('image/png');
-
-                const imgWidth = 210; // A4 size width in mm
-                const pageHeight = 295; // A4 size height in mm
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                let heightLeft = imgHeight;
-                let position = 0;
-
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-
-                while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
-                }
-
-                pdf.save('voucher_report.pdf');
+            const doc = new jsPDF();
+            
+            // Extracting the table data
+            const table = document.getElementById('data-table');
+            doc.text("Voucher Data Report", 14, 16);  // Title
+            doc.autoTable({
+                html: table,           // Get table content
+                startY: 20,            // Position the table below the title
+                theme: 'grid',         // Optional styling: grid theme
+                headStyles: { fillColor: [41, 128, 185] }, // Custom styles for header
             });
+
+            // Save the generated PDF
+            doc.save('voucher_report.pdf');
         }
     </script>
 </body>
