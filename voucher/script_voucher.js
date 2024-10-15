@@ -1,16 +1,3 @@
-function validateForm() {
-    const voucherNo = document.getElementById('voucherNo').value;
-    const date = document.getElementById('date').value;
-    const amount = document.getElementById('amount').value;
-    const paid_to = document.getElementById('paid_to').value;
-    const description = document.getElementById('description').value;
-
-    if (!voucherNo || !date || !amount || !paid_to || !description) {
-        alert("Please fill in all the required fields.");
-        return false;
-    }
-    return true;
-}
 document.getElementById('voucherForm').addEventListener('submit', function(event) {
     event.preventDefault();  // Prevent the default form submission
 
@@ -22,6 +9,9 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     const description = document.getElementById('description').value;
     const remark = document.getElementById('remark').value;
     const timestamp = new Date().toLocaleString(); 
+
+    // Get the user's name from the URL parameter (assuming it's passed from the login page)
+    const userName = new URLSearchParams(window.location.search).get('name');
 
     // URL of your Google Apps Script Web App (replace with your actual Web App URL)
     const scriptURL = 'https://script.google.com/a/~/macros/s/AKfycby0bI95R-TukDh_GFKW4Sj-AFr5G8zY0gYztQl9F1U7u4eM6LQ1TLmrPpb1rJX-ggMT/exec';
@@ -35,6 +25,7 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     formData.append('description', description);
     formData.append('remark', remark);
     formData.append('timestamp', timestamp);
+    formData.append('userName', userName); // Append the user's name to the form data
 
     // Show loading indicator (disable button and show spinner)
     const submitButton = document.querySelector('button[type="submit"]');
