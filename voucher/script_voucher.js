@@ -11,7 +11,7 @@ document.getElementById('voucherForm').addEventListener('submit', function(event
     const timestamp = new Date().toLocaleString(); 
 
     // Get the user's name from the URL parameter (assuming it's passed from the login page)
-    const userName = new URLSearchParams(window.location.search).get('name');
+    const userName = document.getElementById('userName').textContent;
 
     // URL of your Google Apps Script Web App (replace with your actual Web App URL)
     const scriptURL = 'https://script.google.com/a/~/macros/s/AKfycby0bI95R-TukDh_GFKW4Sj-AFr5G8zY0gYztQl9F1U7u4eM6LQ1TLmrPpb1rJX-ggMT/exec';
