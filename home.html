@@ -51,6 +51,8 @@ iframe {
 </style>
 </head>
 <body>
+	<div class="container">
+        <h2>Welcome, <span id="userName"></span></h2>
     <div class="container">
         <div class="button-container">
             <button onclick="loadIframe('voucher/voucher.html')">Voucher Entry</button>
@@ -67,7 +69,10 @@ iframe {
  	function loadIframe(url) {
     		document.getElementById('contentIframe').src = url;
 	}
-
+        // Get the user's name from the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get('name');
+        document.getElementById('userName').textContent = userName;
     </script>
 </body>
 </html>
